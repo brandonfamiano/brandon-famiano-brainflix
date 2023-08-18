@@ -17,8 +17,8 @@ class NavComponent extends Component{
                         </div>
                     </a>   
                     <a href="#shows">
-                        <div class="nav__select--active">
-                            Shows
+                        <button class="nav__select--active">
+                            Upload
                         </div>
                     </a> 
                 </div>
