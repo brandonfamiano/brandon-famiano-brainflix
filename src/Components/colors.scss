@@ -1,0 +1,12 @@
+$bandsite-black: #323232;
+$silver: #AFAFAF;
+$white: #FFFFFF;
+$bandsite-darkblack:#000000;
+$mercury: #E1E1E1;
+$alabaster: #FAFAFA;
+@mixin tablet {
+    @media (min-width:768px){@content;}
+}
+@mixin desktop {
+    @media (min-width:1280px){@content;}
+}
