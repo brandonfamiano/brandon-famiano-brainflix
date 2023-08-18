@@ -1,11 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import "./Components/component/component"
+import React, { Component } from 'react';
 import NavComponent from './Components/nav';
-function App() {
-  return (
-    <NavComponent/>
-  );
+ 
+class App extends Component{
+  render(){
+    return(
+      <div>
+        <NavComponent/>
+      </div>
+    );  
+  }
 }
-
+ 
 export default App;
