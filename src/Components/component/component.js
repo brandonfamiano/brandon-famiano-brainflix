@@ -1,1 +1,1 @@
-import NavComponent from "../nav";
+import React, { Component } from 'react';

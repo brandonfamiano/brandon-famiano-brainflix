@@ -8,7 +8,7 @@
     display:flex;
     flex-direction:column;
     justify-content: space-between;
-    background: $bandsite-black;
+    background: $white;
     @include tablet {
         flex-direction:row;
         align-items: center;
