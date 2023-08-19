@@ -5,6 +5,25 @@ $white: #FFFFFF;
 $brainflix-darkblack:#000000;
 $mercury: #E1E1E1;
 $alabaster: #FAFAFA;
+@font-face {
+    font-family: "AvenirNextLTPro";
+    src: url(../assets/font/AvenirNextLTPro-Regular.otf) format('opentype');
+    font-weight:normal;
+}
+@font-face {
+    font-family: "AvenirNextLTPro";
+    src: url(../assets/font/AvenirNextLTPro-Bold.otf) format('opentype');
+    font-weight:bold;
+}
+body{
+   font-family:"AvenirNextLTPro";
+}
+button{
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
 @mixin tablet {
     @media (min-width:768px){@content;}
 }

@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import "./nav.scss";
 import logo from '../assets/logo/logo.svg'
-
+import avatar from '../assets/images/Mohan-muruge.jpg'
+import upload from '../assets/icons/upload.svg'
+import search from '../assets/icons/search.svg'
 class NavComponent extends Component{
     render(){
         return(
         <nav>
-            <div class="nav__container">
-                <div class="nav__header">
-                    <a href="index.html"><img src={logo} alt="bandsitelogo" width="120px"></img></a>
+            <div class="nav--container">
+                <div class="nav--header">
+                    <a href="index.html"><img src={logo} alt="brainflixlogo" width="150px"></img></a>
                 </div>
-                <div class="nav__select">
-                    <a href="../index.html">
-                        <div class="nav__select--inactive">
-                                Biography
+                <div class="nav--select">
+                    <a href="#">
+                        <div class="nav--search">
+                                <img class="nav--search__icon" src={search}/>
+                                <input type ="text" placeholder="Search" class="nav--search__bar"></input>
                         </div>
                     </a>   
-                    <a href="#shows">
-                        <button class="nav__select--active">
-                            Upload
-                        </div>
+                    <a href="index.html"><img class="nav--avatar"src={avatar} alt="avatar" width="50px"></img></a>
+                    <a href="#">
+                        <button class="nav--button">
+                            <img src={upload}/>
+                            <span class="nav--button__text">UPLOAD</span>
+                        </button>
                     </a> 
                 </div>
             </div>
