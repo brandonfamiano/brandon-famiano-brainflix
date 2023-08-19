@@ -13,13 +13,11 @@ class NavComponent extends Component{
                     <a href="index.html"><img src={logo} alt="brainflixlogo" width="150px"></img></a>
                 </div>
                 <div class="nav--select">
-                    <a href="#">
                         <div class="nav--search">
                                 <img class="nav--search__icon" src={search}/>
                                 <input type ="text" placeholder="Search" class="nav--search__bar"></input>
                         </div>
-                    </a>   
-                    <a href="index.html"><img class="nav--avatar"src={avatar} alt="avatar" width="50px"></img></a>
+                    <img class="nav--avatar"src={avatar} alt="avatar" width="50px"></img>
                     <a href="#">
                         <button class="nav--button">
                             <img src={upload}/>

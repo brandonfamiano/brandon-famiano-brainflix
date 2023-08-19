@@ -9,24 +9,22 @@
     flex-direction:column;
     justify-content: center;
     background: $white;
-    @include tablet {
-        flex-direction:row;
-        align-items: center;
-        height:5.3125rem;
+    @include tablet{
+        flex-direction: row;
+        height:fit-content;
     }
   }
     &--header{
         width:100%;
+        height:fit-content;
         display:flex;
         justify-content: center;
         align-self:center;
-        @include tablet {
-            margin-top:0;
-            margin-left:0.9375rem;
-        }
-        @include desktop{
-            margin-left:5.3125rem;   
-        }
+    @include tablet{
+        width:40%;
+        justify-content: flex-start;
+        margin-left:3rem;
+    }
   }
     &--select{
         margin:0;
@@ -36,30 +34,60 @@
         width:100%;
         justify-content: space-around;
         align-items: center;
-        height:6rem;
+        height:fit-content;
+        @include tablet{
+            width:75%;
+            flex-wrap:nowrap;
+        }
+        @include desktop{
+            width:45%;
+            justify-content: flex-end;
+            gap:5%
+        }
     }
-    a{
-        width:100%;
+    .nav--search::placeholder{
+        color:$brainflix-black;
     }
     &--search{
-        width:17.5rem;
-        height:5rem;
-        flex-wrap:wrap;
+        width:70%;
+        height:2rem;
+        padding-left:.25rem;
+        margin:0;
+        border: solid .5px $silver;
+        background-color: $alabaster;
+        border-radius: .25rem;
+        display:flex;
+        justify-content: flex-start;
+        input{
+            outline-width:0;
+            @include tablet{
+                font-size:1rem;
+                
+            }
+        }
+        @include tablet{
+            width:40%;
+            height:2.5rem;
+            order:initial;
+        }
+        @include desktop{
+            width:40%;
+        }
         &__bar{
-            width:95%;
-            height:2.1rem;
-            margin:0;
-            padding-left:1.75rem;
-            background-color: $alabaster;
-            border: solid .5px $silver;
-            opacity: 1;
-            color: $brainflix-black !important;
-            border-radius:.2rem;
+            border:none;
+            width:75%;
+            height:100%;
+            padding-left:1rem;
+            background:none;
+            border-radius: .25rem;
+
         }
         &__icon{
-            position: relative;
-            top:2rem;
-            left:.3rem;
+            align-self: center;
+            
+            img{
+                margin:0;
+            }
         }
     }
     &--avatar{
@@ -68,6 +96,15 @@
         margin:5px;
         width:37.5px;
         object-fit: cover;   
+        @include tablet{
+            order:3;
+            height:40px;
+            width:40px;
+        }
+        @include desktop{
+            height:50px;
+            width:50px;
+        }
     }
     &--button{
         background-color: $brainflix-blue;
@@ -77,6 +114,10 @@
         height:2.6rem;
         display:flex;
         align-items: center;
+        @include tablet{ 
+            order:2;
+            width:10rem;
+        }
         img{
             justify-self: flex-start;
         }
