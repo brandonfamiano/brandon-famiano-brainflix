@@ -1,0 +1,217 @@
+@import 'colors';
+.video-player {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+  
+    .main-video {
+      margin-bottom: 20px;
+  
+      video {
+        width: 100%;
+      }
+  
+      .video-description,
+      .comment__container {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+  
+        .thumbnail img {
+          max-width: 100%;
+          border-radius: 8px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+  
+        .video-info {
+          h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+          }
+  
+          p {
+            margin: 5px 0;
+          }
+        }
+      }
+  
+      .comment__form {
+        margin-top: 20px;
+  
+        h3 {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+  
+        .comment__form-inputs {
+          display: flex;
+          flex-direction: column;
+  
+          .comment__form-name,
+          .comment__form-text {
+            margin-bottom: 15px;
+  
+            label {
+              display: block;
+              font-size: 14px;
+              margin-bottom: 5px;
+            }
+  
+            input,
+            textarea {
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+            }
+  
+            input.error,
+            textarea.error {
+              border-color: #ff0000;
+            }
+          }
+  
+          button {
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+  
+            &:hover {
+              background-color: #cc0000;
+            }
+          }
+        }
+      }
+    }
+  
+    .video-list {
+      display: flex;
+      flex-direction: column;
+  
+      .video-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+  
+        &:hover {
+          transform: translateX(10px);
+        }
+  
+        img {
+          width: 80px;
+          height: 60px;
+          border-radius: 6px;
+          margin-bottom: 5px;
+        }
+  
+        p.title {
+          font-size: 16px;
+          font-weight: bold;
+          margin: 0;
+        }
+  
+        p.artist {
+          font-size: 14px;
+          color: #888;
+          margin: 0;
+        }
+      }
+    }
+  
+    .comment__container {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  
+      .comment__item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 15px;
+  
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-bottom: 10px;
+        }
+  
+        h3 {
+          font-size: 18px;
+          margin-bottom: 5px;
+        }
+  
+        h4 {
+          font-size: 14px;
+          color: #888;
+          margin-right: 10px;
+          margin-bottom: 10px;
+        }
+  
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  
+  // Tablet styles using @include
+  @include tablet {
+    .video-player {
+      flex-direction: row;
+  
+      .main-video {
+        flex: 2;
+        margin-right: 20px;
+  
+        .video-description,
+        .comment__container {
+          margin-bottom: 0;
+        }
+      }
+  
+      .video-list {
+        flex: 1;
+      }
+    }
+  }
+  
+  // Desktop styles using @include
+  @include desktop {
+    .video-player {
+      .main-video {
+        .video-description,
+        .comment__container {
+          padding: 30px;
+        }
+      }
+  
+      .video-list {
+        .video-item {
+          img {
+            width: 120px;
+            height: 90px;
+          }
+  
+          p.title {
+            font-size: 18px;
+          }
+  
+          p.artist {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  

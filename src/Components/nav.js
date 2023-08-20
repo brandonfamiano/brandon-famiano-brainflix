@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./nav.scss";
+import "../styles/nav.scss";
 import logo from '../assets/logo/logo.svg'
 import avatar from '../assets/images/Mohan-muruge.jpg'
 import upload from '../assets/icons/upload.svg'
