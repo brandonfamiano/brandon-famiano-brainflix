@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import "../styles/nav.scss";
-import logo from '../assets/logo/logo.svg'
-import avatar from '../assets/images/Mohan-muruge.jpg'
-import upload from '../assets/icons/upload.svg'
-import search from '../assets/icons/search.svg'
+import logo from '../Assets/logo/logo.svg'
+import avatar from '../Assets/Images/Mohan-muruge.jpg'
+import upload from '../Assets/Icons/upload.svg'
+import search from '../Assets/Icons/search.svg'
 class NavComponent extends Component{
     render(){
         return(

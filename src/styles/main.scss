@@ -1,143 +1,162 @@
 @import 'colors';
-.video-player {
+.video {
     display: flex;
     flex-direction: column;
     font-family: Arial, sans-serif;
   
-    .main-video {
-      margin-bottom: 20px;
+    &__main {
+      margin-bottom: .5rem;    
+    }
+}
+.wrapper{
+  @include desktop{
+    display:flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  height:100rem;
+  }
   
-      video {
-        width: 100%;
+}
+::placeholder{
+  color:$brainflix-darkblack;
+  font-weight: normal;
+}
+.comment {
+  margin-top: 20px;
+  width:100%;
+  display:flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include tablet{
+    width:100%
+  }
+  @include desktop{
+    width:75%;
+  }
+  &__form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include tablet{
+      flex-direction: row;
+      justify-content: space-around;
+      width:100%;
+    }
+    &--name{
+      width:17rem;
+      @include tablet{
+        width:24rem;
+        height:2rem;
       }
-  
-      .video-description,
-      .comment__container {
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        margin-bottom: 20px;
-  
-        .thumbnail img {
-          max-width: 100%;
-          border-radius: 8px;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      input{
+        width:100%;
+        margin-bottom:.5rem;
+        font-size:1rem;
+        @include tablet{
+          font-size:1.5rem;
         }
-  
-        .video-info {
-          h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-          }
-  
-          p {
-            margin: 5px 0;
-          }
-        }
+      font-family:inherit;
       }
-  
-      .comment__form {
-        margin-top: 20px;
-  
-        h3 {
-          font-size: 20px;
-          margin-bottom: 10px;
-        }
-  
-        .comment__form-inputs {
-          display: flex;
-          flex-direction: column;
-  
-          .comment__form-name,
-          .comment__form-text {
-            margin-bottom: 15px;
-  
-            label {
-              display: block;
-              font-size: 14px;
-              margin-bottom: 5px;
-            }
-  
-            input,
-            textarea {
-              padding: 10px;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-            }
-  
-            input.error,
-            textarea.error {
-              border-color: #ff0000;
-            }
-          }
-  
-          button {
-            padding: 10px 20px;
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-  
-            &:hover {
-              background-color: #cc0000;
-            }
-          }
+    }
+    &--text{
+      width:17rem;
+      font-size:1rem;
+      font-family:inherit;
+      textarea{
+        resize:none;
+        width:17rem;
+        height:4rem;
+        margin-bottom:.5rem;
+        font-size:1rem;
+        font-family:inherit;
+        @include tablet{
+          height:2rem;
+          margin:0;
+          padding:0;
+          font-size:1.5rem; 
         }
       }
     }
+  }
   
-    .video-list {
-      display: flex;
-      flex-direction: column;
-  
-      .video-item {
+  h3{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  #submit{
+  background-color:$brainflix-blue;
+  color: #FFFFFF;
+  font-family: "AvenirNextLTPro";
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  height: 2.5rem;
+  width: 17rem;
+  }
+}
+.videolist {
+    
+    display: flex;
+    flex-direction: column; 
+    margin-top:1rem;
+    @include tablet{
+      width:35%;
+      margin-left:4rem;
+    }
+    @include desktop{
+      width:15%;
+    }
+    &__item {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 10px;
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out;
-  
-        &:hover {
-          transform: translateX(10px);
-        }
-  
         img {
           width: 80px;
           height: 60px;
           border-radius: 6px;
           margin-bottom: 5px;
         }
-  
-        p.title {
-          font-size: 16px;
-          font-weight: bold;
-          margin: 0;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+          transform: translateX(10px);
         }
   
-        p.artist {
-          font-size: 14px;
-          color: #888;
+        
+  
+        p.title {
+          font-size: 1rem;
+          font-weight: bold;
           margin: 0;
+          @include tablet{
+            font-size:1.3rem;
+            width:15rem;
+          }
         }
       }
     }
   
-    .comment__container {
+.comment__container {
       background-color: #fff;
       border-radius: 8px;
       padding: 20px;
       margin-top: 20px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      @include desktop{
+        width:75%;
+      }
   
-      .comment__item {
+      .comment__container--item {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 15px;
+
   
         img {
           width: 40px;
@@ -147,71 +166,78 @@
         }
   
         h3 {
-          font-size: 18px;
+          font-size: 1rem;
           margin-bottom: 5px;
+          @include tablet{
+            font-size:1.3rem;
+          }
         }
   
         h4 {
-          font-size: 14px;
+          font-size: .8rem;
           color: #888;
           margin-right: 10px;
           margin-bottom: 10px;
+          @include tablet{
+            font-size:1rem;
+          }
         }
   
         p {
-          font-size: 16px;
-        }
-      }
-    }
-  }
-  
-  // Tablet styles using @include
-  @include tablet {
-    .video-player {
-      flex-direction: row;
-  
-      .main-video {
-        flex: 2;
-        margin-right: 20px;
-  
-        .video-description,
-        .comment__container {
-          margin-bottom: 0;
-        }
-      }
-  
-      .video-list {
-        flex: 1;
-      }
-    }
-  }
-  
-  // Desktop styles using @include
-  @include desktop {
-    .video-player {
-      .main-video {
-        .video-description,
-        .comment__container {
-          padding: 30px;
-        }
-      }
-  
-      .video-list {
-        .video-item {
-          img {
-            width: 120px;
-            height: 90px;
-          }
-  
-          p.title {
-            font-size: 18px;
-          }
-  
-          p.artist {
-            font-size: 16px;
+          font-size:1rem;
+          @include tablet{
+            font-size:1.2rem;
           }
         }
       }
-    }
+    } 
+
+.description{
+  width:100%;
+  height:fit-content;
+  margin-bottom:1rem;
+  @include desktop{
+    width:75%;
   }
-  
+  &__info{
+    font-size:1rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+    text-align: center;
+    font-size:1.2rem;
+    h2{
+      align-self: center;
+      text-align: center;
+      border-bottom: solid 1px $silver;
+      padding:.1rem;
+      font-size: 1.4rem;
+      width:95%;
+      font-weight:600;
+    }
+    span{
+      font-weight:bold;
+      width:50%;
+      height:fit-content;
+    }
+    p{
+      margin:0;
+      color:$silver;
+      width:50%;
+      img{
+        margin-right:.4rem;
+      }
+
+    }
+    div{
+      color:$brainflix-black;
+      font-size:1.25rem;
+      border-top:solid 1px $silver;
+      padding:2rem;
+      text-align: left;
+      width:100%;
+    }
+    
+  }
+}

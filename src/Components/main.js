@@ -1,10 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import videosData from '../Data/video-details.json'; // Update the path to your video-details.json
+import videosData from '../Data/video-details.json';
+import viewslogo from '../Assets/Icons/views.svg';
+import likeslogo from '../Assets/Icons/likes.svg';
 import "../styles/main.scss";
 
 const VideoPlayer = () => {
   const [selectedVideo, setSelectedVideo] = useState(videosData[0]);
-  const [commentArray, setCommentArray] = useState([]);
+  const [commentArray, setCommentArray] = useState([
+    {
+      image: "",
+      name: "Connor Walton",
+      comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reference. Let us appreciate this for what it is and what it contains.",
+      datePosted: "3 days ago"
+    },
+    {
+      image: "",
+      name: "Emilie Beach",
+      comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
+      datePosted: "5 days ago"
+    },
+    {
+      image: "",
+      name: "Miles Acosta",
+      comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't Get enough.",
+      datePosted: "5 days ago"
+    }
+  ]);
   const [newName, setNewName] = useState('');
   const [newCommentText, setNewCommentText] = useState('');
 
@@ -17,18 +38,13 @@ const VideoPlayer = () => {
     return new Date(timestamp).toLocaleDateString(undefined, options);
   };
 
-  useEffect(() => {
-    // Comment initialization logic goes here if needed
-  }, []);
-
   const addComment = () => {
     if (!newName || !newCommentText) {
-      // Handle error, return early
       return;
     }
 
     const newComment = {
-      image: "/assets/images/Mohan-muruge",
+      image: "/Assets/Images/Mohan-muruge.jpg",
       name: newName,
       datePosted: "posted Now",
       comment: newCommentText,
@@ -40,50 +56,56 @@ const VideoPlayer = () => {
   };
 
   return (
-    <div className="video-player">
-      <div className="main-video">
-        <video controls width="100%">
+    <div class="video">
+      
+      <div class="video__main">
+        <video controls width="100%" poster={selectedVideo.image}>
           <source src={selectedVideo.videoUrl} type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
-        <div className="video-description">
-          <div className="thumbnail">
-            <img src={selectedVideo.image} alt={selectedVideo.title} />
-          </div>
-          <div className="video-info">
+        </div>
+        <div class="wrapper">
+        <div class="description">
+          <div class="description__info">
             <h2>{selectedVideo.title}</h2>
-            <p>Channel: {selectedVideo.channel}</p>
-            <p>Views: {selectedVideo.views}</p>
-            <p>Likes: {selectedVideo.likes}</p>
-            <p>Date Posted: {formatDate(selectedVideo.timestamp)}</p>
-            <p>{selectedVideo.description}</p>
+            <span>By: {selectedVideo.channel}</span>
+            <p><img src={viewslogo}></img>Views: {selectedVideo.views}</p>
+            <p>{formatDate(selectedVideo.timestamp)}</p>
+            <p><img src={likeslogo}></img>Likes: {selectedVideo.likes}</p>
+            <div>{selectedVideo.description}</div>
           </div>
         </div>
-        <div className="comment__form">
+        <div class="comment">
           <h3>JOIN THE CONVERSATION</h3>
-          <div className="comment__form-inputs">
-            <div className="comment__form-name">
-              <label htmlFor="name">Name</label>
+          <div class="comment__form">
+            <div class="comment__form--name">
               <input type="text" id="name" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Your Name" />
             </div>
-            <div className="comment__form-text">
-              <label htmlFor="comment">Comment</label>
+            <div class="comment__form--text">
               <textarea id="comment" value={newCommentText} onChange={(e) => setNewCommentText(e.target.value)} placeholder="Add a comment"></textarea>
             </div>
           </div>
           <button id="submit" onClick={addComment}>COMMENT</button>
         </div>
+        <div class="comment__container">
+        {commentArray.map((comment, index) => (
+          <div key={index} class="comment__container--item">
+            <h3>{comment.name}</h3>
+            <h4>{comment.datePosted}</h4>
+            <p>{comment.comment}</p>
+          </div>
+        ))}
       </div>
-      <div className="video-list">
+      <div class="videolist">
         {videosData
-          .filter(video => video !== selectedVideo) // Exclude the selected main video
+          .filter(video => video !== selectedVideo)
           .map((video) => (
-            <div key={video.id} className="video-item" onClick={() => handleVideoSelect(video)}>
+            <div key={video.id} class="videolist__item" onClick={() => handleVideoSelect(video)}>
               <img src={video.image} alt={video.title} />
-              <p className="title">{video.title}</p>
-              <p className="artist">{video.artist}</p>
+              <p class="title">{video.title}</p>
+              <p class="artist">{video.artist}</p>
             </div>
           ))}
+      </div>
       </div>
     </div>
   );
