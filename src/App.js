@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NavComponent from './components/nav';
-import VideoPlayer from './components/main';
+import NavComponent from './Components/nav';
+import VideoPlayer from './Components/main';
  
 class App extends Component{
   render(){
