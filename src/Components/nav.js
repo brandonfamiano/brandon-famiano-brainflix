@@ -11,7 +11,7 @@ class NavComponent extends Component{
         <nav>
             <div className="nav--container">
                 <div className="nav--header">
-                    <a href="index.html"><img src={logo} alt="brainflixlogo" width="150px"></img></a>
+                    <Link to="/"><img src={logo} alt="brainflixlogo" width="150px"></img></Link>
                 </div>
                 <div className="nav--select">
                         <div className="nav--search">

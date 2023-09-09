@@ -1,0 +1,94 @@
+@import 'colors';
+.thumbnail{
+    width: 100%;
+    border-radius: 5%;
+    border: solid 1px grey;
+
+}
+.upload {
+    margin-top: 20px;
+    width:100%;
+    display:flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include tablet{
+      width:100%
+    }
+    @include desktop{
+      width:75%;
+    }
+    &__form{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @include tablet{
+        flex-direction: row;
+        justify-content: space-around;
+        width:100%;
+      }
+      &--name{
+        width:17rem;
+        @include tablet{
+          width:24rem;
+          height:3rem;
+        }
+        input{
+          width:100%;
+          margin-bottom:.5rem;
+          font-size:1rem;
+          @include tablet{
+            font-size:1.5rem;
+            height:100%;
+          }
+        font-family:inherit;
+        }
+      }
+      &--text{
+        width:17rem;
+        font-size:1rem;
+        font-family:inherit;
+        @include tablet{
+            height:6rem;
+        }
+        textarea{
+          resize:none;
+          width:17rem;
+          height:4rem;
+          margin-bottom:.5rem;
+          font-size:1rem;
+          font-family:inherit;
+          @include tablet{
+            height:100%;    
+            margin:0;
+            padding:0;
+            font-size:1.5rem; 
+          }
+        }
+      }
+    }
+}
+button{
+    background-color: $brainflix-blue;
+    border:0;
+    border-radius: .25rem;
+    width:22.5rem;
+    height:2.6rem;
+    cursor:pointer;
+    display:flex;
+    align-items: center;
+    @include tablet{ 
+        order:2;
+        width:10rem;
+    }
+    img{
+        justify-self: flex-start;
+    }
+    &__text{
+        text-decoration: none;
+        width:85%;
+        color:white;
+        font-size:15.5px;
+    }
+}
