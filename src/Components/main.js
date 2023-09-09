@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import videosData from '../Data/video-details.json';
+import axios from 'axios';
 import viewslogo from '../Assets/Icons/views.svg';
 import likeslogo from '../Assets/Icons/likes.svg';
 import "../styles/main.scss";
+
+
+
+let videoAPI = "https://project-2-api.herokuapp.com/videos";
 
 const VideoPlayer = () => {
   const [selectedVideo, setSelectedVideo] = useState(videosData[0]);
