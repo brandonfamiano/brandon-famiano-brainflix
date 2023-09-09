@@ -3,6 +3,8 @@ import axios from 'axios';
 import viewslogo from '../Assets/Icons/views.svg';
 import likeslogo from '../Assets/Icons/likes.svg';
 import "../styles/main.scss";
+import NavComponent from './nav';
+
 
 
 
@@ -105,9 +107,11 @@ const VideoPlayer = () => {
     setNewCommentText('');
   };
 
+
   return (
+    
     <div className="video">
-      
+      <NavComponent></NavComponent>
       <div className="video__main">
         <video controls width="100%" poster={selectedVideo.image}>
           <source src={selectedVideo.videoUrl} type="video/mp4" />

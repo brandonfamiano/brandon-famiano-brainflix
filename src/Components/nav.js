@@ -9,20 +9,20 @@ class NavComponent extends Component{
     render(){
         return(
         <nav>
-            <div class="nav--container">
-                <div class="nav--header">
+            <div className="nav--container">
+                <div className="nav--header">
                     <a href="index.html"><img src={logo} alt="brainflixlogo" width="150px"></img></a>
                 </div>
-                <div class="nav--select">
-                        <div class="nav--search">
-                                <img class="nav--search__icon" src={search}/>
-                                <input type ="text" placeholder="Search" class="nav--search__bar"></input>
+                <div className="nav--select">
+                        <div className="nav--search">
+                                <img className="nav--search__icon" src={search}/>
+                                <input type ="text" placeholder="Search" className="nav--search__bar"></input>
                         </div>
-                    <img class="nav--avatar"src={avatar} alt="avatar" width="50px"></img>
+                    <img className="nav--avatar"src={avatar} alt="avatar" width="50px"></img>
                     <Link to="/upload">
-                        <button class="nav--button">
+                        <button className="nav--button">
                             <img src={upload}/>
-                            <span class="nav--button__text">UPLOAD</span>
+                            <span className="nav--button__text">UPLOAD</span>
                         </button>
                    </Link>
                 </div>
