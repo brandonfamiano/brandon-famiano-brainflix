@@ -16,9 +16,12 @@ const VideoPlayer = () => {
   const [videosData, setVideosData] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState({
     id: "",
-    title:"",
-    channe:"",
+    title: "",
+    channel: "",
     image: '',
+    likes: 0,
+    views: 0,
+    timestamp: 0,
   });
   useEffect(() => {
     axios.get(videoAPI)
@@ -27,15 +30,17 @@ const VideoPlayer = () => {
         if (data.length > 0) {
           setVideosData(data);
           setSelectedVideo(data[0]);
-  
-          if (data[0]) {
-            console.log("API Response for First Video:", data[0]);
-          }
-  
           axios.get(`${selectedAPI}${data[0].id}?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2`)
             .then((response) => {
-              setVideoDetails(response.data);
-              setVideoComments(response.data.comments);
+              const videoDetailsData = response.data; 
+              setSelectedVideo((prevSelectedVideo) => ({
+                ...prevSelectedVideo,
+                likes: videoDetailsData.likes,
+                views: videoDetailsData.views,
+                timestamp: videoDetailsData.timestamp,
+              }));
+              setVideoDetails(videoDetailsData);
+              setVideoComments(videoDetailsData.comments);
             })
             .catch((error) => {
               console.error("Error fetching video details:", error);
@@ -47,23 +52,34 @@ const VideoPlayer = () => {
       });
   }, []);
   
+  
   const [videoComments, setVideoComments] = useState([]);
   const [newName, setNewName] = useState('');
   const [newCommentText, setNewCommentText] = useState("");
-
-  const handleVideoSelect = (video) => {
-    setSelectedVideo(video);
-    const filteredComments = videoComments.filter(comment => comment.videoId === video.id);
-    
-      axios.get(`${selectedAPI}${video.id}?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2`)
+  const updateVideoDetails = (videoId) => {
+    axios.get(`${selectedAPI}${videoId}?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2`)
       .then((response) => {
-        setVideoDetails(response.data);
-        setVideoComments(response.data.comments);
+        const videoDetailsData = response.data;
+
+        setSelectedVideo((prevSelectedVideo) => ({
+          ...prevSelectedVideo,
+          likes: videoDetailsData.likes,
+          views: videoDetailsData.views,
+          timestamp: videoDetailsData.timestamp,
+        }));
+
+        setVideoDetails(videoDetailsData);
+        setVideoComments(videoDetailsData.comments);
       })
       .catch((error) => {
         console.error("Error fetching video details:", error);
       });
-
+  };
+  const handleVideoSelect = (video) => {
+    setSelectedVideo(video);
+  
+    // Call the function to update video details and comments
+    updateVideoDetails(video.id);
   };
   
 
