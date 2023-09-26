@@ -30,9 +30,11 @@ const VideoPlayer = () => {
       .then((response) => {
         const data = response.data;
         if (data.length > 0) {
-          setVideosData(data);
-          setSelectedVideo(data[0]);
-          axios.get(`${selectedAPI}${data[0].id}?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2`)
+          const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
+          setVideosData(sortedData);
+          setSelectedVideo(sortedData[0]); 
+          
+          axios.get(`${selectedAPI}${sortedData[0].id}?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2`)
             .then((response) => {
               const videoDetailsData = response.data; 
               setSelectedVideo((prevSelectedVideo) => ({
@@ -53,8 +55,7 @@ const VideoPlayer = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  
-  
+
   const [videoComments, setVideoComments] = useState([]);
   const [newName, setNewName] = useState('');
   const [newCommentText, setNewCommentText] = useState("");
@@ -79,8 +80,6 @@ const VideoPlayer = () => {
   };
   const handleVideoSelect = (video) => {
     setSelectedVideo(video);
-  
-    // Call the function to update video details and comments
     updateVideoDetails(video.id);
   };
   
