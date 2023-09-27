@@ -25,14 +25,14 @@ const VideoPlayer = () => {
     views: 0,
     timestamp: 0,
   });
-  useEffect(() => {
+useEffect(() => {
     axios.get(videoAPI)
       .then((response) => {
         const data = response.data;
         if (data.length > 0) {
           const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
           setVideosData(sortedData);
-          setSelectedVideo(sortedData[0]); 
+          setSelectedVideo(sortedData[0]);
           
           axios.get(`${selectedAPI}${sortedData[0].id}?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2`)
             .then((response) => {
@@ -53,7 +53,7 @@ const VideoPlayer = () => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-      });
+      }); 
   }, []);
 
   const [videoComments, setVideoComments] = useState([]);

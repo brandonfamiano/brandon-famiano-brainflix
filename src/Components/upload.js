@@ -5,9 +5,7 @@ import NavComponent from './nav';
 import "../styles/upload.scss";
 import upload from '../Assets/Icons/upload.svg';
 import thumbnail from '../Assets/Images/Mohan-muruge.jpg';
-
 let videoAPI = "https://project-2-api.herokuapp.com/videos?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2";
-
 function Upload() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -20,7 +18,7 @@ function Upload() {
       description: description,
     };
 
-    axios.post(videoAPI, videoData)
+    axios.post(videoAPI, videoData) 
       .then((response) => {
         console.log('Video uploaded successfully!', response.data);
         setUploadedVideo(response.data);
@@ -28,6 +26,7 @@ function Upload() {
       })
       .catch((error) => {
         console.error('Error uploading video:', error);
+
       });
   };
 
