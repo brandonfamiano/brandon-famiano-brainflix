@@ -30,7 +30,7 @@ useEffect(() => {
       .then((response) => {
         const data = response.data;
         if (data.length > 0) {
-          const sortedData = data.sort((a, b) => b.timestamp - a.timestamp);
+          const sortedData = data.sort((a, b) => a.timestamp - b.timestamp);
           setVideosData(sortedData);
           setSelectedVideo(sortedData[0]);
           
@@ -149,16 +149,19 @@ useEffect(() => {
         ))}
       </div>
       <div className="videolist">
-        {videosData
-          .filter(video => video !== selectedVideo)
-          .map((video) => (
-            <div key={video.id} className="videolist__item" onClick={() => handleVideoSelect(video)}>
-              <img src={video.image} alt={video.title} />
-              <p className="title">{video.title}</p>
-              <p className="artist">{video.artist}</p>
-            </div>
-          ))}
+  {videosData
+    .filter(video => video.id !== selectedVideo.id)
+    .map((video) => (
+      <div key={video.id} className="videolist__item" onClick={() => handleVideoSelect(video)}>
+        <img src={video.image} alt={video.title} />
+        <p className="title">{video.title}</p>
+        <p className="artist">{video.artist}</p>
       </div>
+    ))}
+</div>
+
+
+
       </div>
     </div>
   );
