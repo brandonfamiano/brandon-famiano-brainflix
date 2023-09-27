@@ -25,14 +25,16 @@ const VideoPlayer = () => {
     views: 0,
     timestamp: 0,
   });
-  useEffect(() => {
+useEffect(() => {
     axios.get(videoAPI)
       .then((response) => {
         const data = response.data;
         if (data.length > 0) {
-          setVideosData(data);
-          setSelectedVideo(data[0]);
-          axios.get(`${selectedAPI}${data[0].id}?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2`)
+          const sortedData = data.sort((a, b) => a.timestamp - b.timestamp);
+          setVideosData(sortedData);
+          setSelectedVideo(sortedData[0]);
+          
+          axios.get(`${selectedAPI}${sortedData[0].id}?api_key=c2e6a793-f014-4ae3-8642-44c624ee5be2`)
             .then((response) => {
               const videoDetailsData = response.data; 
               setSelectedVideo((prevSelectedVideo) => ({
@@ -51,10 +53,9 @@ const VideoPlayer = () => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-      });
+      }); 
   }, []);
-  
-  
+
   const [videoComments, setVideoComments] = useState([]);
   const [newName, setNewName] = useState('');
   const [newCommentText, setNewCommentText] = useState("");
@@ -79,8 +80,6 @@ const VideoPlayer = () => {
   };
   const handleVideoSelect = (video) => {
     setSelectedVideo(video);
-  
-    // Call the function to update video details and comments
     updateVideoDetails(video.id);
   };
   
@@ -150,16 +149,19 @@ const VideoPlayer = () => {
         ))}
       </div>
       <div className="videolist">
-        {videosData
-          .filter(video => video !== selectedVideo)
-          .map((video) => (
-            <div key={video.id} className="videolist__item" onClick={() => handleVideoSelect(video)}>
-              <img src={video.image} alt={video.title} />
-              <p className="title">{video.title}</p>
-              <p className="artist">{video.artist}</p>
-            </div>
-          ))}
+  {videosData
+    .filter(video => video.id !== selectedVideo.id)
+    .map((video) => (
+      <div key={video.id} className="videolist__item" onClick={() => handleVideoSelect(video)}>
+        <img src={video.image} alt={video.title} />
+        <p className="title">{video.title}</p>
+        <p className="artist">{video.artist}</p>
       </div>
+    ))}
+</div>
+
+
+
       </div>
     </div>
   );
